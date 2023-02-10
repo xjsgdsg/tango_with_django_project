@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+
+
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
+    <body>
+        <h1>Rango says...</h1>
+        <div>
+            hey there partner! <br />
+            <strong>{{ boldmessage }}</strong><br />
+        </div>
+
+       <div>
+        <ul>
+         {% for category in categories %}
+            <li><!-- The following line is changed to add an HTML hyperlink -->
+                <a href="{% url 'rango:show_category' category.slug %}">
+                    {{ category.name }}
+                </a>
+
+            </li>
+         {% endfor %}
+        </ul>
+
+         <strong>There are no categories present.</strong>
+         </div>
+
+        <div>
+            <a href="/rango/about/">About</a><br />x
+            <img src="{% static 'images/image.jpg' %}"
+            alt="Picture of Rango" /> <!-- New line -->
+
+        </div>
+        <div>
+            <a href="/rango/add_category/">Add a New Category</a><br />
+        </div>
+        <div>
+            <a href="rango/category.slug/add_pag/">Add a New page</a><br />
+        </div>
+
+    </body>
+</html>
